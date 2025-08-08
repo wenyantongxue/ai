@@ -152,11 +152,11 @@ export default defineConfig({
         pointer-events: none;
       }
       
-      /* ===== 副标题字号调整 ===== */
-      .VPHero .text {
-        /* 字号调小 - 直接覆盖VitePress默认字号 */
-        font-size: 24px !important; 
-      }
+             /* ===== 副标题字号调整 ===== */
+       .VPHero .text {
+         /* 字号调小 - 直接覆盖VitePress默认字号 */
+         font-size: 24px !important;
+       }
       
       @media (min-width: 640px) {
         .VPHero .text {
