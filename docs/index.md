@@ -6,7 +6,7 @@ hero:
   text: "探索前沿 • 知识共享"
   tagline: "Make every learning experience meaningful."
   image:
-    src: /生成高清图片.png
+    src: /hero-image.png
     alt: AI Knowledge Base
   actions:
     - theme: brand
@@ -41,6 +41,23 @@ features:
 import { onMounted } from 'vue'
 
 onMounted(() => {
+  // 图片加载优化
+  const heroImage = document.querySelector('.VPHero .VPImage')
+  if (heroImage) {
+    // 添加加载状态
+    heroImage.style.opacity = '0'
+    
+    // 图片加载完成后显示
+    heroImage.onload = () => {
+      heroImage.style.opacity = '1'
+    }
+    
+    // 如果图片已经加载完成
+    if (heroImage.complete) {
+      heroImage.style.opacity = '1'
+    }
+  }
+  
   // 添加更多装饰元素
   const imageContainer = document.querySelector('.VPHero .image-container')
   if (imageContainer) {

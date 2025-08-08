@@ -11,6 +11,8 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     ['meta', { name: 'description', content: '文炎同学的AI知识库 - 人工智能学习笔记与技术分享' }],
+    // 预加载关键图片
+    ['link', { rel: 'preload', href: '/hero-image.png', as: 'image' }],
     ['style', {}, `
       /* ===== CSS变量定义 ===== */
       :root { 
@@ -39,13 +41,31 @@ export default defineConfig({
         }
       }
       
-      /* ===== 图像样式 ===== */
-      .VPHero .VPImage {
-        /* 图像阴影效果 - 左下角阴影，带透明度 */
-        filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.2));
-        /* 图像内边距 - 18px让图像更突出 */
-        padding: 18px;
-      }
+             /* ===== 图像样式 ===== */
+       .VPHero .VPImage {
+         /* 图像阴影效果 - 左下角阴影，带透明度 */
+         filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.2));
+         /* 图像内边距 - 18px让图像更突出 */
+         padding: 18px;
+         /* 图片加载优化 */
+         object-fit: cover;
+         object-position: center;
+         /* 防止图片变形 */
+         max-width: 100%;
+         height: auto;
+         /* 平滑加载 */
+         transition: opacity 0.3s ease-in-out;
+       }
+       
+       /* 图片加载时的占位符 */
+       .VPHero .VPImage:not([src]) {
+         background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+                     linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+                     linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+                     linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+         background-size: 20px 20px;
+         background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+       }
       
       /* ===== 装饰元素容器 ===== */
       .VPHero .image-container {
