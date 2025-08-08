@@ -11,8 +11,9 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     ['meta', { name: 'description', content: '文炎同学的AI知识库 - 人工智能学习笔记与技术分享' }],
-    // 预加载关键图片
-    ['link', { rel: 'preload', href: '/hero-image.png', as: 'image' }],
+    // 预加载关键图片 - 支持多种格式
+    ['link', { rel: 'preload', href: '/hero-image.webp', as: 'image', type: 'image/webp' }],
+    ['link', { rel: 'preload', href: '/hero-image.png', as: 'image', type: 'image/png' }],
     ['style', {}, `
       /* ===== CSS变量定义 ===== */
       :root { 
@@ -65,6 +66,25 @@ export default defineConfig({
                      linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
          background-size: 20px 20px;
          background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+       }
+       
+       /* 响应式图片优化 */
+       @media (max-width: 640px) {
+         .VPHero .VPImage {
+           max-width: 300px;
+         }
+       }
+       
+       @media (min-width: 641px) and (max-width: 960px) {
+         .VPHero .VPImage {
+           max-width: 400px;
+         }
+       }
+       
+       @media (min-width: 961px) {
+         .VPHero .VPImage {
+           max-width: 500px;
+         }
        }
       
       /* ===== 装饰元素容器 ===== */

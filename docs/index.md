@@ -6,7 +6,7 @@ hero:
   text: "探索前沿 • 知识共享"
   tagline: "Make every learning experience meaningful."
   image:
-    src: /hero-image.png
+    src: /hero-image.webp
     alt: AI Knowledge Base
   actions:
     - theme: brand
